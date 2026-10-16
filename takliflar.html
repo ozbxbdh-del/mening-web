@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Takliflar — O'zbek Tili</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <header>
+        <div class="container header-content">
+            <h1>O'zbek Tili — Davlat Tili va Milliy G'urur</h1>
+            <nav>
+                <a href="index.html">Bosh sahifa</a>
+                <a href="asarlar.html">Asarlar & She'rlar</a>
+                <a href="testlar.html">Testlar & Tahlil</a>
+                <a href="takliflar.html" class="active">Taklif & Mulohazalar</a>
+            </nav>
+        </div>
+    </header>
+
+    <main class="container">
+        <div class="content-box">
+            <h2 class="section-title">Taklif va Mulohazalar</h2>
+            <p style="margin-bottom: 20px;">Portalimizni yanada boyitish va rivojlantirish bo'yicha o'z fikr-mulohaza hamda takliflaringizni qoldiring:</p>
+
+            <form onsubmit="submitFeedback(event)">
+                <label style="font-weight: 600; display: block; margin-bottom: 5px;">Ism va Familiyangiz:</label>
+                <input type="text" id="name" placeholder="Masalan: Ali Valiyev" required>
+
+                <label style="font-weight: 600; display: block; margin-bottom: 5px;">Email manzilingiz:</label>
+                <input type="email" id="email" placeholder="masalan@mail.com" required>
+
+                <label style="font-weight: 600; display: block; margin-bottom: 5px;">Taklif yoki Mulohazangiz:</label>
+                <textarea id="message" rows="6" placeholder="Fikringizni barcha tafsilotlari bilan yozing..." required></textarea>
+
+                <button type="submit" class="btn-submit">Yuborish</button>
+            </form>
+
+            <div id="feedbackMsg" style="margin-top: 20px; font-weight: bold; color: #2c7a62; display: none;"></div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2026 O'zbek Tili Bosh Portali. Barcha huquqlarhimoyalangan.</p>
+        </div>
+    </footer>
+
+    <script>
+        function submitFeedback(e) {
+            e.preventDefault();
+            const name = document.getElementById('name').value;
+            const msgBox = document.getElementById('feedbackMsg');
+
+            msgBox.style.display = 'block';
+            msgBox.innerText = `Rahmat, ${name}! Fikr va taklifingiz muvaffaqiyatli qabul qilindi.`;
+
+            document.getElementById('name').value = '';
+            document.getElementById('email').value = '';
+            document.getElementById('message').value = '';
+        }
+    </script>
+
+</body>
+</html>
