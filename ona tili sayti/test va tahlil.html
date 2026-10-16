@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Testlar va Tahlil — O'zbek Tili</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <header>
+        <div class="container header-content">
+            <h1>O'zbek Tili — Davlat Tili va Milliy G'urur</h1>
+            <nav>
+                <a href="index.html">Bosh sahifa</a>
+                <a href="asarlar.html">Asarlar & She'rlar</a>
+                <a href="testlar.html" class="active">Testlar & Tahlil</a>
+                <a href="takliflar.html">Taklif & Mulohazalar</a>
+            </nav>
+        </div>
+    </header>
+
+    <main class="container">
+        <div class="content-box">
+            <h2 class="section-title">Bilimingizni Sinang: Interaktiv Testlar</h2>
+            <p style="margin-bottom: 25px;">O'zbek tili tarixi va adabiyoti bo'yicha bilimlaringizni sinab ko'ring va yakuniy tahlil bilan tanishing.</p>
+
+            <form id="quizForm">
+                <!-- Savol 1 -->
+                <div class="quiz-item">
+                    <p>1. O'zbek tiliga qachon Davlat tili maqomi berilgan?</p>
+                    <div class="quiz-options">
+                        <label><input type="radio" name="q1" value="A"> A) 1991-yil 1-sentyabr</label>
+                        <label><input type="radio" name="q1" value="B"> B) 1989-yil 21-oktyabr</label>
+                        <label><input type="radio" name="q1" value="C"> C) 1992-yil 8-dekabr</label>
+                    </div>
+                </div>
+
+                <!-- Savol 2 -->
+                <div class="quiz-item">
+                    <p>2. "Devonu lug'atit-turk" asarining muallifi kim?</p>
+                    <div class="quiz-options">
+                        <label><input type="radio" name="q2" value="A"> A) Mahmud Qashqariy</label>
+                        <label><input type="radio" name="q2" value="B"> B) Alisher Navoiy</label>
+                        <label><input type="radio" name="q2" value="C"> C) Yusuf Xos Hojib</label>
+                    </div>
+                </div>
+
+                <!-- Savol 3 -->
+                <div class="quiz-item">
+                    <p>3. Turkiy va fors tillarini solishtirib, "Muhokamat-ul lug'atayn" asarini kim yozgan?</p>
+                    <div class="quiz-options">
+                        <label><input type="radio" name="q3" value="A"> A) Zahiriddin Muhammad Bobur</label>
+                        <label><input type="radio" name="q3" value="B"> B) Lutfiy</label>
+                        <label><input type="radio" name="q3" value="C"> C) Alisher Navoiy</label>
+                    </div>
+                </div>
+
+                <!-- Savol 4 -->
+                <div class="quiz-item">
+                    <p>4. O'zbek tili turkiy tillarning qaysi guruhiga kiradi?</p>
+                    <div class="quiz-options">
+                        <label><input type="radio" name="q4" value="A"> A) O'g'uz guruhi</label>
+                        <label><input type="radio" name="q4" value="B"> B) Qarluq guruhi</label>
+                        <label><input type="radio" name="q4" value="C"> C) Qipchoq guruhi</label>
+                    </div>
+                </div>
+
+                <!-- Savol 5 -->
+                <div class="quiz-item">
+                    <p>5. "Xamsa" dostoni nechta dostonni o'z ichiga oladi?</p>
+                    <div class="quiz-options">
+                        <label><input type="radio" name="q5" value="A"> A) 4 ta</label>
+                        <label><input type="radio" name="q5" value="B"> B) 5 ta</label>
+                        <label><input type="radio" name="q5" value="C"> C) 7 ta</label>
+                    </div>
+                </div>
+
+                <button type="button" class="btn-submit" onclick="checkAnswers()">Natijani Ko'rish va Tahlil</button>
+            </form>
+
+            <div id="resultBox" class="result-box">
+                <h3 id="scoreText" style="color: #1b4d3e; margin-bottom: 10px;"></h3>
+                <hr style="margin-bottom: 15px;">
+                <div id="analysisText"></div>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2026 O'zbek Tili Bosh Portali. Barcha huquqlarhimoyalangan.</p>
+        </div>
+    </footer>
+
+    <script>
+        function checkAnswers() {
+            const correctAnswers = { q1: 'B', q2: 'A', q3: 'C', q4: 'B', q5: 'B' };
+            let score = 0;
+            let total = 5;
+
+            for (let i = 1; i <= total; i++) {
+                const selected = document.querySelector(`input[name="q${i}"]:checked`);
+                if (!selected) {
+                    alert("Iltimos, barcha savollarga javob belgilang!");
+                    return;
+                }
+                if (selected.value === correctAnswers[`q${i}`]) {
+                    score++;
+                }
+            }
+
+            const resultBox = document.getElementById('resultBox');
+            const scoreText = document.getElementById('scoreText');
+            const analysisText = document.getElementById('analysisText');
+
+            resultBox.style.display = 'block';
+            scoreText.innerText = `Siz 5 ta savoldan ${score} tasiga to'g'ri javob berdingiz! (${(score/total)*100}%)`;
+
+            analysisText.innerHTML = `
+                <h4>Test Tahlili:</h4>
+                <ul style="margin-left: 20px; margin-top: 10px;">
+                    <li><strong>1-savol:</strong> To'g'ri javob B (1989-yil 21-oktyabr).</li>
+                    <li><strong>2-savol:</strong> To'g'ri javob A (Mahmud Qashqariy XI asrda birinchi turkiy lug'atni tuzgan).</li>
+                    <li><strong>3-savol:</strong> To'g'ri javob C (Alisher Navoiy ona tilimiz imkoniyatlarini ko'rsatib bergan).</li>
+                    <li><strong>4-savol:</strong> To'g'ri javob B (O'zbek va uyg'ur tillari qarluq guruhiga kiradi).</li>
+                    <li><strong>5-savol:</strong> To'g'ri javob B ("Xamsa" beshlik degani va 5 dostonni o'z ichiga oladi).</li>
+                </ul>
+            `;
+            
+            resultBox.scrollIntoView({ behavior: 'smooth' });
+        }
+    </script>
+
+</body>
+</html>
